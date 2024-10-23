@@ -8,6 +8,8 @@ import { fetchArticles, createArticle } from "../services/articleService"
 import "./App.css"
 
 export default function App() {
+  //functions that start with 'use' are hooks, very special
+  //useState allows you to create variables tracked by react
   const [articles, setArticles] = useState([])
   const [article, setArticle] = useState(null)
   const [writing, setWriting] = useState(false)
@@ -17,6 +19,7 @@ export default function App() {
   // a user logs in. A real app would do pagination. Note that
   // "fetchArticles" is what gets the articles from the service and
   // then "setArticles" writes them into the React state.
+  //useEffect lets you run code whenever certain variables change
   useEffect(() => {
     if (user) {
       fetchArticles().then(setArticles)

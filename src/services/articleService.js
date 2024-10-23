@@ -23,6 +23,8 @@ export async function createArticle({ title, body }) {
 // you would implement pagination.
 export async function fetchArticles() {
   const snapshot = await getDocs(
+    //we defined db in our firebaseConfig file
+    //give me the 20 most recent articles from db ordering them in reverse order by their date  
     query(collection(db, "articles"), orderBy("date", "desc"), limit(20))
   )
   return snapshot.docs.map((doc) => ({
@@ -30,3 +32,4 @@ export async function fetchArticles() {
     ...doc.data(),
   }))
 }
+
