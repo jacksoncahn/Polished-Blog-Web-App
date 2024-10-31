@@ -8,8 +8,12 @@ export default function ArticleEntry({ addArticle }) {
   function submit(e) {
     setError(null)
     e.preventDefault()
-    if (!title.trim() || !body.trim()) {
-      setError("Both the title and body must be supplied")
+    if (!title.trim() && !body.trim()) {
+      setError("⚠️ NEEDS A BODY AND TITLE")
+    } else if (!body.trim()){
+      setError("⚠️ NEEDS A BODY")
+    } else if (!title.trim()) {
+      setError("⚠️ NEEDS A TITLE")
     } else {
       addArticle({ title, body })
     }

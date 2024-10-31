@@ -1,6 +1,3 @@
-// This service completely hides the data store from the rest of the app.
-// No other part of the app knows how the data is stored. If anyone wants
-// to read or write data, they have to go through this service.
 
 import { db } from "../firebaseConfig"
 import {
@@ -15,10 +12,10 @@ import {
 
 export async function createArticle({ title, body }) {
   const data = { title, body, date: Timestamp.now() }
+  data.date = data.date.toDate()
   const docRef = await addDoc(collection(db, "articles"), data)
   return { id: docRef.id, ...data }
 }
-
 // NOT FINISHED: This only gets the first 20 articles. In a real app,
 // you would implement pagination.
 export async function fetchArticles() {
@@ -27,9 +24,12 @@ export async function fetchArticles() {
     //give me the 20 most recent articles from db ordering them in reverse order by their date  
     query(collection(db, "articles"), orderBy("date", "desc"), limit(20))
   )
+  //data.date = date.toDate()
   return snapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
+    date: doc.data().date.toDate(),
   }))
 }
+
 
