@@ -1,12 +1,12 @@
 @font-face {
-  src: url("PlayfairDisplay-VariableFont_wght.ttf") format(truetype);
+  src: url("./src/PlayfairDisplay-VariableFont_wght.ttf") format(truetype);
   font-family: "Playfair Display";
 }
 
 body {
   margin: 0;
   font-family: "Playfair Display", Arial, Helvetica, sans-serif;
-  background-image: url("blogbg.jpg");
+  background-image: url("./src/blogbg.jpg");
   background-position: center;
   background-size: cover;
 }
