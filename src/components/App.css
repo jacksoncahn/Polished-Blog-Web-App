@@ -14,9 +14,23 @@ body {
 .App {
   display: grid;
   grid-template-rows: min-content auto;
-  grid-template-columns: 250px auto;
+  grid-template-columns: min-content, min-content, min-content;
   height: 100vh;
   overflow: scroll;
+}
+
+button {
+  border-width: 2px;
+  border-style: solid;   
+  border-color: rgb(113, 75, 149);  
+  border-radius: 20px; 
+  padding: 10px 20px;
+  background-color: #cdc2ea;
+  transition: opacity 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.4;
 }
 
 header {
@@ -30,9 +44,23 @@ header {
 
 form {
   padding: 10px;
+  padding-left: 3vw;
+  grid-column: 2/ span 2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.forminput {
+  width: 30vw;
+}
+
+.textarea {
+  width: 30vw;
+}
+
+article {
+  width: 30vw;
 }
 
 form input,
@@ -50,6 +78,7 @@ article {
 
 nav {
   background-color: #efd4f5;
+  width: 30vw;
 }
 
 nav p:hover {
@@ -71,8 +100,9 @@ article .body {
   padding: 5px;
 }
 
-@media (max-width: 520px) {
-  body {
-    background: red;
+@media (max-width: 700px) {
+  form {
+    padding-left: 10px;
+    align-items: flex-start;
   }
 }
